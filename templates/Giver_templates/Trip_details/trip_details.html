@@ -1,0 +1,136 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Update Mark</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+    </style>
+</head>
+
+<body>
+<a href="/giver_home">Back</a>
+
+
+
+    <div class="container">
+        <div class="row p-5">
+          {% for det in det%}
+            <div class="col-md-4">
+                    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 22rem;">
+                      <img src="{{detail.profile_pic.url}}" class="card-img-top " style="height:200px;" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title text-center" ><b>{{det.giver_name}}</b></h5>
+                          <div class="row">
+                              <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.start}}</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>></b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.destination}}</b></h4>
+                              </div>
+
+                              <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>Date</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>:</b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.date}}</b></h4>
+                              </div>
+
+
+                              <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>Veh model</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>:</b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.veh_model}}</b></h4>
+                              </div>
+
+
+                               <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>Price</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>:</b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.price}}</b></h4>
+                              </div>
+
+
+                               <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>Seat</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>:</b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.seat}}</b></h4>
+                              </div>
+
+
+                              <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>Bal Seat</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>:</b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                    <h4 class="card-text fs-6" style="font-family:cursive;"><b>{{det.bal_seat}}</b></h4>
+                              </div>
+
+
+
+                              <div class="col-md-5 mt-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>Status</b></h4>
+                              </div>
+                              <div class="col-md-1">
+                                  <h4 class="card-text fs-6" style="font-family:cursive;"><b>:</b></h4>
+                              </div>
+
+                              <div class="col-md-5">
+                                 {% if det.status == 'Ongoing' %}
+                                    <h4 class="card-text fs-6" style="font-family:cursive; color:green;"><b>{{det.status}}</b></h4>
+                                  {% else %}
+                                     <h4 class="card-text fs-6" style="font-family:cursive; color:red;"><b>{{det.status}}</b></h4>
+                                  {% endif %}
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

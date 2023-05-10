@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for dess, abc in data.items %}
+    <img src="{{abc.profile_pic.url}}">
+    {{dess.giver_name}}
+{% endfor %}
+
+
+
+</body>
+</html>

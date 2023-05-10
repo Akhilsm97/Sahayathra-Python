@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giver Home</title>
+     <!-- Bootstrap CSS -->
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+	<!-- Stylesheets -->
+	<!-- Dropdown Menu -->
+	<link rel="stylesheet" href="giver_home/css/superfish.css">
+
+	<!-- Owl Slider -->
+	<!-- <link rel="stylesheet" href="giver_home/css/owl.carousel.css"> -->
+	<!-- <link rel="stylesheet" href="giver_home/css/owl.theme.default.min.css"> -->
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/bootstrap-datepicker.min.css' %}">
+	<!-- CS Select -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/cs-select.css' %}">
+	<link rel="stylesheet" href="{% static 'giver_home/css/cs-skin-border.css' %}">
+
+	<!-- Themify Icons -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'giver_home/css/rating.css' %}">
+  <link rel="stylesheet" href="{% static 'giver_home/css/style123.css' %}">
+	<!-- Flat Icon -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/flaticon.css' %}">
+	<!-- Icomoon -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/icomoon.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/flexslider.css">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="{% static 'giver_home/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'giver_home/css/carousel.css' %}">
+
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'giver_home/js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{% static 'giver_home/js/respond.min.js' %}"></script>
+	<![endif]-->
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <p class="navbar-text"  style=" color:white;font-family: "Lucida Console", "Courier New", monospace;">
+	Welcome {{username_user}}
+	</p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav " style="margin-left:500px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link view_data" href="#" style="color:white;" data-toggle="modal" data-target="#exampleModal">Make a Trip</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" data-toggle="modal" data-target="#exampleModals">View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/acceptance" style="color:white;">Acceptance <span class="badge  badge-danger" style="background:red;">
+                {{des}}
+          </span>
+                <span class="sr-only">unread messages</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:white;" data-toggle="modal" data-target="#Modaled" >Reciept</a>
+        </li>
+        <li class="nav-item dropdown">
+                    <a class="nav-link " id="userDropdown"  style="color:white;" href="/logout"><i class="fas fa-user fa-fw"></i></a>
+
+
+                    </div>
+                </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<!-- Carousel -->
+
+<div class="untitled">
+	<div class="untitled__slides">
+		<div class="untitled__slide">
+			<div class="untitled__slideBg"></div>
+			<div class="untitled__slideContent">
+				<span style="font-size:50px;">SAHAYATHRA</span> <br><br>
+				<span style="font-size:30px;font-style: italic;"><strong>"Remember that happiness is a way of travel, not a destination."</strong></span>
+
+			</div>
+		</div>
+		<div class="untitled__slide">
+			<div class="untitled__slideBg"></div>
+			<div class="untitled__slideContent">
+
+				<span style="font-size:50px;">SAHAYATHRA</span> <br><br>
+				<span style="font-size:30px;font-style: italic;"><strong>"The world is a book and those who do not travel read only one page."</strong></span>
+
+			</div>
+		</div>
+		<div class="untitled__slide">
+			<div class="untitled__slideBg"></div>
+			<div class="untitled__slideContent">
+				<span style="font-size:50px;">SAHAYATHRA</span> <br><br>
+				<span style="font-size:30px;font-style: italic;"><strong>“Jobs fill your pockets, adventures fill your soul.”</strong></span>
+
+			</div>
+		</div>
+		<div class="untitled__slide">
+			<div class="untitled__slideBg"></div>
+			<div class="untitled__slideContent">
+				<span style="font-size:50px;">SAHAYATHRA</span> <br><br>
+				<span style="font-size:30px;font-style: italic;"><strong>“Travel is the only thing you buy that makes you richer.”</strong></span>
+
+			</div>
+		</div>
+	</div>
+	<div class="untitled__shutters"></div>
+</div>
+
+
+
+<!---------Modal Host----------------------->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"style="padding-top:120px;">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document"style="padding-top:100px;" >
+    <div class="modal-content"  style="background-color:white; width:560px; ">
+      <div class="modal-header" >
+        <h5 class="modal-title" id="exampleModalLabel" style="font-size:25px; font-style: italic; margin-left:220px;">Trip Host</h5>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"> <span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body"style="margin-top:-40px;">
+
+
+      <div class="signup-form">
+    <form action="/make_trip/" method="post">
+        {% csrf_token%}
+		<h2>Register</h2>
+		<div class="form-group">
+        	<input type="text" class="form-control" name="giver_name"  value="{{username_user}}" readonly>
+        </div>
+        <div class="form-group">
+			<div class="row" style="color:black;">
+                <div class="col" style="color:black;">
+                    <select  name="start"  class="form-control" style="color:black;height:58px;">
+                                <option style="font-weight:bold;">---Select---</option>
+                                <option value="Trivandrum" style="font-weight:bold;">Trivandrum</option>
+                                <option value="Kollam" style="font-weight:bold;">Kollam</option>
+                                <option value="Pathanamthitta" style="font-weight:bold;">Pathanamthitta</option>
+                                <option value="Alappuzha" style="font-weight:bold;">Alappuzha</option>
+                                <option value="Kottayam" style="font-weight:bold;">Kottayam</option>
+                                <option value="Eranakulam" style="font-weight:bold;">Eranakulam</option>
+                                <option value="Edukki" style="font-weight:bold;">Edukki</option>
+                                <option value="Palakkad" style="font-weight:bold;">Palakkad</option>
+                                <option value="Thrissur" style="font-weight:bold;">Thrissur</option>
+                                <option value="Malapuram" style="font-weight:bold;">Malapuram</option>
+                                <option value="Kozhikode" style="font-weight:bold;">Kozhikode</option>
+                                <option value="Wayanad" style="font-weight:bold;">Wayanad</option>
+                                <option value="Kannur" style="font-weight:bold;">Kannur</option>
+                                <option value="Kasaragod" style="font-weight:bold;">Kasaragod</option>
+                    </select>
+                </div>
+				<div class="col">
+                    <select class="form-control" name="destination" required style="color:black;height:58px;">
+                        <option style="font-weight:bold;">---Select---</option>
+                                <option value="Trivandrum" style="font-weight:bold;">Trivandrum</option>
+                                <option value="Kollam" style="font-weight:bold;">Kollam</option>
+                                <option value="Pathanamthitta" style="font-weight:bold;">Pathanamthitta</option>
+                                <option value="Alappuzha" style="font-weight:bold;">Alappuzha</option>
+                                <option value="Kottayam" style="font-weight:bold;">Kottayam</option>
+                                <option value="Eranakulam" style="font-weight:bold;">Eranakulam</option>
+                                <option value="Edukki" style="font-weight:bold;">Edukki</option>
+                                <option value="Palakkad" style="font-weight:bold;">Palakkad</option>
+                                <option value="Thrissur" style="font-weight:bold;">Thrissur</option>
+                                <option value="Malapuram" style="font-weight:bold;">Malapuram</option>
+                                <option value="Kozhikode" style="font-weight:bold;">Kozhikode</option>
+                                <option value="Wayanad" style="font-weight:bold;">Wayanad</option>
+                                <option value="Kannur" style="font-weight:bold;">Kannur</option>
+                                <option value="Kasaragod" style="font-weight:bold;">Kasaragod</option>
+                    </select>
+                </div>
+			</div>
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="time" placeholder="Time" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="date" class="form-control" name="date" placeholder="Date" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="veh_model" placeholder="Vehicle Model" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="price" placeholder="Amount" required="required">
+        </div>
+		<div class="form-group">
+            <input type="text" class="form-control" name="seat" placeholder="No of Seats" required="required">
+        </div>
+
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block" name="submit">Host</button>
+        </div>
+    </form>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal for view -->
+<div class="modal fade" id="exampleModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"style="margin-top:-60px; margin-left:1000px;">
+  <div class="modal-dialog modal-dialog-centered  modal-lg " role="document"style="padding-top:100px; " >
+    <div class="modal-content"  style="background-color:white; width:360px; border-radius:10px;">
+      <div class="modal-header" >
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:red;">
+          <span aria-hidden="true" style="color:red;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body shadow-lg p-3 mb-5 bg-white rounded"style="width:40px;">
+	  <div class="container">
+      <div class="row" style="padding:10px;">
+  <div class="col-sm-2"><a href="#" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg" style="color:white;text-decoration:none; padding:10px 10px 10px 10px;margin-top:10px; border-radius:10px;">Profile</a></div>
+  <div class="coll-sm-2"><a href="/trip_details" class="btn btn-success" style="color:white;text-decoration:none; padding:10px 10px 10px 10px;margin-top:10px; border-radius:10px;">Trip Details</a></div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"style="padding-top:200px;" >
+          <div class="modal-dialog  modal-dialog-centered modal-lg " style="margin-left:100px;">
+            <div class="modal-content " style="border-radius:5px;")>
+                <div class="modal-header "style="backbround-color:red;" >
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:red;">
+                        <span aria-hidden="true" style="color:red;">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="row " style="border:solid green 1px;padding-top:20px;">
+                            <div class="col-md-4">
+                                <img src="{{det.profile_pic.url}}" class="img-thumbnail" style="padding-bottom:10px; width:200px; height:200px;">
+                            </div>
+                            <div class="col-md-8">
+                                <p>Name&nbsp;: &nbsp;{{det.giver_name}}</p>
+                                <p style="margin-top:-20px;font-family:cursive;">Address&nbsp;: &nbsp;{{det.address}}</p>
+                                <p style="margin-top:-20px;font-family:cursive;">Aaddhar&nbsp;: &nbsp;{{det.aaddhar}}</p>
+                                <p style="margin-top:-20px;font-family:cursive;">Mob No&nbsp;: &nbsp;{{det.mob_no}}</p>
+                                <p style="margin-top:-20px;font-family:cursive;">Native&nbsp;: &nbsp;{{det.native}}</p>
+                                <p style="margin-top:-20px;font-family:cursive;">Nationality&nbsp;: &nbsp;{{det.nationality}}</p>
+                                <p style="margin-top:-20px;font-family:cursive;">Veh Type&nbsp;: &nbsp;{{det.veh_type}}</p>
+
+                            </div>
+
+                        </div>
+
+                </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+                  </div>
+            </div>
+            </div>
+        </div>
+
+
+
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="padding-top:100px;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Rate the Trip</h5>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top:20px;"> <span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      <div class="signup-form">
+    <form action="feedback.php" method="post">
+		<h2>Rate the Trip</h2>
+		<div class="form-group">
+        	<input type="text" class="form-control" name="Giver_Name"  value="gdgdg">
+        </div>
+        <div class="form-group">
+        <textarea type="text" class="form-control mb-10" placeholder="What would you like to say about this Trip" name="feedback"></textarea>
+        </div>
+        <div class="stars">
+                     <input class="star star-5" id="star-5" type="radio" name="star" value="5 star" />
+                     <label class="star star-5" for="star-5">
+
+                     </label> <input class="star star-4" id="star-4" type="radio" name="star" value="4 star" />
+                     <label class="star star-4" for="star-4"></label>
+                     <input class="star star-3" id="star-3" type="radio" name="star"  value="3 star" />
+                     <label class="star star-3" for="star-3"></label>
+                     <input class="star star-2" id="star-2" type="radio" name="star"  value="2 star" />
+                     <label class="star star-2" for="star-2"></label>
+                     <input class="star star-1" id="star-1" type="radio" name="star" value="1 star"/>
+                     <label class="star star-1" for="star-1"></label>
+            </div>
+
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block" name="submit">Submit</button>
+        </div>
+    </form>
+</div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" >
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="Modaled" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabeled">Hosted Trips</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% if make %}
+            <table class="table table-hover" style="margin:10px 0px 0px 30px; width:90%;">
+              <thead>
+                <tr style="font-size:18px;color:black;">
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Start</th>
+                  <th scope="col">Detination</th>
+                  <th scope="col">Trip Id</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Receipt</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for make in make%}
+                <tr style="font-weight:bold;">
+                  <th scope="row">1</th>
+                  <td>{{make.giver_name}}</td>
+                  <td>{{make.start}}</td>
+                  <td>{{make.destination}}</td>
+                  <td>{{make.trip_id}}</td>
+                  <td>{{make.date}}</td>
+                  <td><a href="/giver_receipt_view/{{make.trip_id}}"><img src="{% static 'images/edit.jpg'%}" style="width:20px; height:20px;"></a> </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+
+          <p style="color:red;"><b>{{ msg }}</b></p>
+        {% endif %}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+	   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'giver_home/js/scripts.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+</body>
+</html>

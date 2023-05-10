@@ -1,0 +1,191 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Testing</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+
+    </style>
+</head>
+
+<body>
+<a href="/taker_home/" id="back">Back</a>
+{{msg}}
+
+    <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="margin-top:80px; ">
+        <form method="post" action="/available_trip/">
+            {% csrf_token %}
+            <div class="row" style="height:170px;padding:20px; margin:30px; width:97%;">
+                <div class="col-md-4" style="border: solid blue 2px;height:140px;">
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:2px;font-size:23px;"><b>Start</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <select type="text" name="start" required  class="form-control" style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;font-family:cursive;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                <option value="Trivandrum" style="font-weight:bold;">Trivandrum</option>
+                                <option value="Kollam" style="font-weight:bold;">Kollam</option>
+                                <option value="Pathanamthitta" style="font-weight:bold;">Pathanamthitta</option>
+                                <option value="Alappuzha" style="font-weight:bold;">Alappuzha</option>
+                                <option value="Kottayam" style="font-weight:bold;">Kottayam</option>
+                                <option value="Eranakulam" style="font-weight:bold;">Eranakulam</option>
+                                <option value="Edukki" style="font-weight:bold;">Edukki</option>
+                                <option value="Palakkad" style="font-weight:bold;">Palakkad</option>
+                                <option value="Thrissur" style="font-weight:bold;">Thrissur</option>
+                                <option value="Malapuram" style="font-weight:bold;">Malapuram</option>
+                                <option value="Kozhikode" style="font-weight:bold;">Kozhikode</option>
+                                <option value="Wayanad" style="font-weight:bold;">Wayanad</option>
+                                <option value="Kannur" style="font-weight:bold;">Kannur</option>
+                                <option value="Kasaragod" style="font-weight:bold;">Kasaragod</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4" style="border: solid blue 2px;height:140px;">
+
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:2px;font-size:23px;"><b>End</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <select  name="destination"  class="form-control"  required style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;font-family:cursive;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                <option value="Trivandrum" style="font-weight:bold;">Trivandrum</option>
+                                <option value="Kollam" style="font-weight:bold;">Kollam</option>
+                                <option value="Pathanamthitta" style="font-weight:bold;">Pathanamthitta</option>
+                                <option value="Alappuzha" style="font-weight:bold;">Alappuzha</option>
+                                <option value="Kottayam" style="font-weight:bold;">Kottayam</option>
+                                <option value="Eranakulam" style="font-weight:bold;">Eranakulam</option>
+                                <option value="Edukki" style="font-weight:bold;">Edukki</option>
+                                <option value="Palakkad" style="font-weight:bold;">Palakkad</option>
+                                <option value="Thrissur" style="font-weight:bold;">Thrissur</option>
+                                <option value="Malapuram" style="font-weight:bold;">Malapuram</option>
+                                <option value="Kozhikode" style="font-weight:bold;">Kozhikode</option>
+                                <option value="Wayanad" style="font-weight:bold;">Wayanad</option>
+                                <option value="Kannur" style="font-weight:bold;">Kannur</option>
+                                <option value="Kasaragod" style="font-weight:bold;">Kasaragod</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="border: solid blue 2px;height:140px;">
+
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:2px;font-size:23px;"><b>Date</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <input type="date" name="trip_date"  class="form-control" style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-success mt-2" style="width:160px;margin-left:300px;">Search</button>
+                <button  class="btn btn-primary mt-2" id="show" data-toggle="collapse" data-target="#submit_date" aria-expanded="false" aria-controls="submit_date" style="width:160px;margin-left:100px;">Show Details</button>
+
+            </div>
+        </form>
+    </div>
+
+<div class="content" style="padding:20px; margin-left:50px;width:100%">
+    <div id="accordions">
+        <div id="submit_date" class="collapse " aria-labelledby="headingOne" data-parent="#accordions" >
+            <div class="container-fluid">
+              {% if dess %}
+                <div class="row">
+                  {% for dess in dess %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                          <div class="card-body">
+                              <h5 class="card-title fs-6"><b>{{dess.start}} >> {{dess.destination}} </b></h5>
+                                <p class="card-text"><b>Date : {{dess.date}} </b> </p>
+                              <p class="card-text"><b>Time : {{dess.time}} </b> </p>
+                              <p class="card-text"><b>Trip Id : {{dess.trip_id}} </b> </p>
+                                    <button class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal-{{forloop.counter}}"  style="margin:20px 0px 5px 100px;">Select Here</button>
+                          </div>
+                        </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <h4 style="color:red; font-family: cursive;" class="text-center"><b>No Record Available</b> </h4>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+    {% for dess in dess %}
+        <div class="modal fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-5">
+                          {% for abcd in abcd %}
+                            {% if abcd.giver_name == dess.giver_name%}
+                                <img src="{{abcd.profile_pic.url}}" class="img-thumbnail" style="width:200px; height:200px;">
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive;" class="text-center"><b>{{abcd.giver_name}}</b></h5>
+                            {% endif %}
+                          {% endfor %}
+                      </div>
+                      <div class="col-md-7">
+                          {% for abcd in abcd %}
+                            {% if abcd.giver_name == dess.giver_name%}
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>{{dess.start}} &nbsp; >> &nbsp; {{dess.destination}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Time &nbsp; : &nbsp; {{dess.time}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Date &nbsp; : &nbsp; {{dess.date}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Veh Type &nbsp; : &nbsp; {{dess.veh_model}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Price &nbsp; : &nbsp; {{dess.price}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Seat &nbsp; : &nbsp; {{dess.seat}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Bal Seat &nbsp; : &nbsp; {{dess.bal_seat}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Trip Id &nbsp; : &nbsp; {{dess.trip_id}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Status &nbsp; : &nbsp; {{dess.status}} </b></h5>
+                          {% endif %}
+                          {% endfor %}
+                      </div>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        <a href="/request_trip/{{username_user}}/{{dess.giver_name}}/{{dess.date}}/{{dess.veh_model}}/{{dess.start}}/{{dess.destination}}/{{dess.trip_id}}" class="btn btn-success">Send Request</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+    {% endfor %}
+
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Testing</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+            .btn-change{
+    height: 50px;
+    width: 200px;
+    background: lightseagreen;
+    float: left;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition: all 0.5s ease-in-out;
+    border: 0px;
+    color: #fff;
+}
+.btn-change:hover{
+    -webkit-transform: scale(1.1);
+    background: #31708f;
+}
+    </style>
+</head>
+
+<body>
+<a href="/taker_home/" id="back">Back</a>
+    <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="margin-top:80px; ">
+        <form method="post" action="/request_trips/">
+            {% csrf_token %}
+            <div class="row" style="height:170px;padding:20px; margin:30px; width:97%;">
+                <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:2px;font-size:23px;"><b>Date</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <input type="date" name="date" required  class="form-control" style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;font-family:cursive;" >
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:20px;font-size:23px;"><b>Action</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <select  name="action"  class="form-control"  required style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;font-family:cursive;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                <option value="Requested" style="font-weight:bold;">Requested</option>
+                                <option value="Accepted" style="font-weight:bold;">Accepted</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-2" style="width:160px;margin-left:300px;">Search</button>
+                <button  class="btn btn-primary mt-2" id="show" data-toggle="collapse" data-target="#submit_date" aria-expanded="false" aria-controls="submit_date" style="width:160px;margin-left:100px;">Show Details</button>
+
+            </div>
+        </form>
+    </div>
+
+    <!----------------------------------------- Block ----------------------------->
+
+         <div class="content" style="padding:20px; margin-left:50px;width:100%">
+            <div id="accordions">
+
+                <!-----------------------------------------Requested Block ----------------------------->
+
+                <div id="submit_date" class="collapse " aria-labelledby="headingOne" data-parent="#accordions" >
+                    <div class="container" style="margin:100px 0px 0px 100px;">
+                        <div class="row">
+                        {% if act == 'Requested' %}
+                          {% if details %}
+                            {% for details in details %}
+                                <div class="col-md-4">
+                                    <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                                        {% for abc in abc %}
+                                          {% if details.giver_name == abc.giver_name %}
+                                            <img class="card-img-top img-thumbnail" src="{{abc.profile_pic.url}}" alt="Card image cap" style="width:16rem; height:15rem;">
+                                           {% endif %}
+                                        {% endfor %}
+                                      <div class="card-body">
+                                        <h5 class="card-title text-center" style="font-family:cursive; ">{{details.giver_name}}</h5>
+                                        <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>{{details.start}} &nbsp; >> &nbsp; {{details.destination}} </b></p>
+                                        <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Date &nbsp; : &nbsp; {{details.date}} </b></b></p>
+                                        <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Status &nbsp; : &nbsp; {{details.trip_status}} </b></b></p>
+                                         <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Trip Id &nbsp; : &nbsp; {{details.trip_id}} </b></b></p>
+                                            {% if details.trip_status == 'Requested' %}
+                                          <p style="margin:10px 0px 0px 20px;font-family:cursive;color:red"><b>Waiting for Acceptance!</b></p>
+                                          {% else %}
+                                                 <a href="#" class="btn btn-success">Proceed to Payment</a>
+                                            {% endif %}
+
+                                      </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                          {% else %}
+                                <h3 class="text-center" style="font-family:cursive; color:red;"><b>{{msg}}&nbsp;!</b></h3>
+                          {% endif %}
+                        {% elif act == 'Accepted'%}
+
+
+                            <!----------------------------------- Accepted Block------------------>
+
+                            {% if details %}
+                            {% for details in details %}
+                                <div class="col-md-4">
+                                    <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                                        {% for abc in abc %}
+                                          {% if details.giver_name == abc.giver_name %}
+                                            <img class="card-img-top img-thumbnail" src="{{abc.profile_pic.url}}" alt="Card image cap" style="width:16rem; height:15rem;">
+                                           {% endif %}
+                                        {% endfor %}
+                                      <div class="card-body">
+                                        <h5 class="card-title text-center" style="font-family:cursive; ">{{details.giver_name}}</h5>
+                                        <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>{{details.start}} &nbsp; >> &nbsp; {{details.destination}} </b></p>
+                                        <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Date &nbsp; : &nbsp; {{details.date}} </b></b></p>
+                                          <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Trip Id &nbsp; : &nbsp; {{details.trip_id}} </b></b></p>
+                                        <p class="card-text" style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Status &nbsp; : &nbsp; {{details.trip_status}} </b></b></p>
+                                           {% if details.trip_status == 'Accepted' and details.payment_status == '' %}
+                                                <a href="/redirect/{{details.id}}" style="margin:15px 0px 0px 35px;" class="btn btn-success btn-change"><b>Proceed to Payment</b></a>
+                                           {% elif details.trip_status == 'Accepted' and details.payment_status == 'Successfull'  %}
+                                                <p style="margin:15px 0px 0px 35px;color:green;font-family:cursive;font-size:18px;" ><b>Payment Successfull</b></p>
+                                          {% else %}
+                                                <p style="margin:10px 0px 0px 20px;font-family:cursive;color:red"><b>Waiting for Acceptance!</b></p>
+                                          {% endif %}
+
+                                      </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                          {% else %}
+                                <h3 class="text-center" style="font-family:cursive; color:red;"><b>{{msg}}&nbsp;!</b></h3>
+                          {% endif %}
+                        {% else %}
+                            <h4>{{msg}}</h4>
+                        {% endif %}
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>

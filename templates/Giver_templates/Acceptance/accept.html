@@ -1,0 +1,249 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Testing</title>
+    <link rel="shortcut icon" href="{% static 'add_student/student_profile/assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Bootstrap/css/fontawsom-all.min.css' %}">
+    <link href="{% static 'homepage/css/Animate/animate.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/teacher_department.css' %}">
+    <style>
+
+    </style>
+</head>
+
+<body>
+<a href="/giver_home/" id="back">Back</a>
+    <div class="container-fluid shadow-lg p-3 mb-5 bg-white rounded" style="margin-top:80px; ">
+        <form method="post" action="/acceptance/">
+            {% csrf_token %}
+
+            {% for msg in messages %}
+                <div class="alert alert-success">
+                    <strong></strong> {{msg}}.
+                </div>
+            {% endfor %}
+
+            <div class="row" style="height:170px;padding:20px; margin:30px; width:97%;">
+                <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:2px;font-size:23px;"><b>Date</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <input type="date" name="date" required  class="form-control" style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;font-family:cursive;" >
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6" style="border: solid blue 2px;height:140px;">
+
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-4" >
+                          <label class="" style="margin-top:28px;margin-left:20px;font-size:23px;"><b>Action</b></label>
+                        </div>
+                        <div class="col-md-4" style="margin-left:-10px;">
+                            <select  name="action"  class="form-control"  required style="margin-top:20px;margin-left:-40px;font-size:15px;background-color:white;color:black;width:250px;height:50px;font-weight:bold;text-align:center;font-family:cursive;" >
+                                <option style="font-weight:bold;">---Select---</option>
+                                <option value="Requested" style="font-weight:bold;">Requested</option>
+                                <option value="Accepted" style="font-weight:bold;">Accepted</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-2" style="width:160px;margin-left:300px;">Search</button>
+                <button  class="btn btn-primary mt-2" id="show" data-toggle="collapse" data-target="#submit_date" aria-expanded="false" aria-controls="submit_date" style="width:160px;margin-left:100px;">Show Details</button>
+
+            </div>
+        </form>
+    </div>
+
+<div class="content" style="padding:20px; margin-left:50px;width:100%">
+    <div id="accordions">
+        <div id="submit_date" class="collapse " aria-labelledby="headingOne" data-parent="#accordions" >
+            <div class="container-fluid">
+                {{msg}}
+               {% if act == 'Requested'%}
+                  {% if dess %}
+                    <div class="row">
+                      {% for dess in dess %}
+                        <div class="col-md-4">
+                            <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                              <div class="card-body">
+                                  <h5 class="card-title fs-6"><b>{{dess.start}} >> {{dess.destination}} </b></h5>
+                                    <p class="card-text"><b>Date : {{dess.date}} </b> </p>
+                                    <p class="card-text"><b>Status : {{dess.trip_status}} </b> </p>
+                                    <p class="card-text"><b>Trip Id : {{dess.trip_id}} </b> </p>
+
+
+                                  <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{forloop.counter}}"  style="margin:20px 0px 5px 100px;">Select Here</button>
+                              </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    <h4 style="color:red; font-family: cursive;" class="text-center"><b>{{msg}}</b> </h4>
+                  {% endif %}
+
+               {% elif act == 'Accepted'%}
+                    {% if dess %}
+                    <div class="row">
+                      {% for dess in dess %}
+                        <div class="col-md-4">
+                            <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                              <div class="card-body">
+                                  {{dess.id}}
+                                  <h5 class="card-title fs-6"><b>{{dess.start}} >> {{dess.destination}} </b></h5>
+                                    <p class="card-text"><b>Date : {{dess.date}} </b> </p>
+                                  <p class="card-text"><b>Status : {{dess.trip_status}} </b> </p>
+                                  <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{forloop.counter}}"   style="margin:20px 0px 5px 100px;">Accepted</button>
+                              </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    <h4 style="color:red; font-family: cursive;" class="text-center"><b>{{msg}}</b> </h4>
+                  {% endif %}
+
+
+
+
+                {% else%}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+    {% for dess in dess %}
+      {% if act == 'Requested' %}
+        <div class="modal fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg"" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-5">
+                          {% for abcd in abcd %}
+                            {% if abcd.taker_name == dess.taker_name%}
+                                <img src="{{abcd.profile_pic.url}}" class="img-thumbnail" style="width:200px; height:200px;">
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive;" class="text-center"><b>{{abcd.taker_name}}</b></h5>
+                            {% endif %}
+                          {% endfor %}
+                      </div>
+                      <div class="col-md-7">
+                          {% for abcd in abcd %}
+                            {% if abcd.taker_name == dess.taker_name%}
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Aaddhar &nbsp; : &nbsp; {{abcd.aaddhar}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Address &nbsp; : &nbsp; {{abcd.address}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>mob No &nbsp; : &nbsp; {{abcd.mob_no}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Native &nbsp; : &nbsp; {{abcd.native}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Nationality &nbsp; : &nbsp; {{abcd.nationality}} </b></h5>
+                          {% endif %}
+                          {% endfor %}
+                                <h5 style="margin:40px 0px 40px 30px; font-family:cursive;"><b>Trip Details</b></h5>
+
+
+                               <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>{{dess.start}} &nbsp; >> &nbsp; {{dess.destination}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Date &nbsp; : &nbsp; {{dess.date}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Veh Type &nbsp; : &nbsp; {{dess.veh_model}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Trip Id &nbsp; : &nbsp; {{dess.trip_id}} </b></h5>
+
+
+
+                      </div>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                  <a href="/accept_trip/{{dess.trip_id}}/{{dess.id}}" class="btn btn-success" style="">Accept </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% elif act == 'Accepted' %}
+
+
+                <div class="modal fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg"" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-md-5">
+                          {% for abcd in abcd %}
+                            {% if abcd.taker_name == dess.taker_name%}
+                                <img src="{{abcd.profile_pic.url}}" class="img-thumbnail" style="width:200px; height:200px;">
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive;" class="text-center"><b>{{abcd.taker_name}}</b></h5>
+                            {% endif %}
+                          {% endfor %}
+                      </div>
+                      <div class="col-md-7">
+                          {% for abcd in abcd %}
+                            {% if abcd.taker_name == dess.taker_name%}
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Aaddhar &nbsp; : &nbsp; {{abcd.aaddhar}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Address &nbsp; : &nbsp; {{abcd.address}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>mob No &nbsp; : &nbsp; {{abcd.mob_no}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Native &nbsp; : &nbsp; {{abcd.native}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Nationality &nbsp; : &nbsp; {{abcd.nationality}} </b></h5>
+                          {% endif %}
+                          {% endfor %}
+                                <h5 style="margin:40px 0px 40px 30px; font-family:cursive;"><b>Trip Details</b></h5>
+
+
+                               <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>{{dess.start}} &nbsp; >> &nbsp; {{dess.destination}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Date &nbsp; : &nbsp; {{dess.date}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Veh Type &nbsp; : &nbsp; {{dess.veh_model}} </b></h5>
+                                <h5 style="margin:10px 0px 0px 0px; font-family:cursive; font-size:14px;"><b>Trip Id &nbsp; : &nbsp; {{dess.trip_id}} </b></h5>
+
+
+                      </div>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button class="btn btn-success" disabled style="pointer-events: none;">Accept </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      {% else %}
+        <h4>{{msg}}</h4>
+      {% endif%}
+    {% endfor %}
+
+
+<script src="{% static 'admin/teachers/teacher_department/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/popper.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'admin/teachers/teacher_department/assets/js/script.js' %}"></script>
+
+</body>
+</html>
